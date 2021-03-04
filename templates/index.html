@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+  <head>
+    <title>File Upload</title>
+    <link rel="stylesheet" href="/static/styles.css">
+  </head>
+  <body>
+    <h1>File Upload</h1>
+
+    <form method="POST" action="" enctype="multipart/form-data">
+      <p><input type="file" name="file"></p>
+      <p><input type="submit" value="Submit"></p>
+    </form>
+
+    <form action="/get_table/" method="post">
+        <button name="forwardBtn" type="submit">Get table!</button>
+    </form>
+    <hr>
+    <form action="/">
+        <button name="" type="submit">Return home!</button>
+    </form>
+    <!-- <form method="GET" action="" enctype="">
+      <button type="button" onclick="get_table()">Get table!</button>
+    </form> -->
+
+    <!-- <a href=/get_table><input type=”button” value=”call_flask_funtion”></a> -->
+    {% for file in files %}
+      <img src="{{ url_for('upload', filename=file) }}" style="width: 64px">
+    {% endfor %}
+    <hr>
+
+    <p>{{forward_message}}</p>
+
+    <table class="table">
+      <tr class="table__header">
+        {% for header in headings %}
+        <th>{{ header }}</th>
+        {% endfor %}
+      </tr>
+      {% for row in data %}
+      <tr class="table__row">
+        {% for cell in row %}
+        <td class="table__cell">{{ cell }}</td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </table>
+
+
+  </body>
+</html>
