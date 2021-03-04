@@ -107,3 +107,7 @@ def helper():
 def move_forward():
     headings,data=helper()
     return render_template("index.html",headings=headings, data=data)
+
+
+if __name__ == '__main__':
+    app.run(threaded=True, port=5000)
